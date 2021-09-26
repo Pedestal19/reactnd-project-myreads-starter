@@ -37,9 +37,9 @@ class SearchPage extends React.Component {
         return this.setState({ results: [] });
       }
       else {
-        res.forEach(thisBook => {
-          let f = this.state.books.filter(currentBook => currentBook.id === thisBook.id);
-          if(f[0]) { thisBook.shelf = f[0].shelf; }
+        res.forEach(b => {
+          let f = this.state.books.filter(B => B.id === b.id);
+          if(f[0]) { b.shelf = f[0].shelf; }
         });
         return this.setState({ results: res });
       }
@@ -51,7 +51,7 @@ class SearchPage extends React.Component {
     .then(resp => {
       book.shelf = shelf;
       this.setState(state => ({
-        books: state.books.filter(thisBook => thisBook.id !== book.id).concat([book])
+        books: state.books.filter(b => b.id !== book.id).concat([book])
       }));
     });
   }
