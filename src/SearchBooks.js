@@ -27,14 +27,12 @@ class SearchBooks extends Component {
 
   submitSearch() {
     if(this.state.query === '' || this.state.query === undefined) {
-      // Reset
       this.clearSearchResults();
       return;
     }
     this.setState({showLoading: "block"});
     BooksAPI.search(this.state.query.trim(), 6).then((books) => {
       if(books.error && books.error === "empty query") {
-        // Bad query; No Results
         this.setState({showLoading: "none", error: true, results: []});
       }
       else {
@@ -53,11 +51,7 @@ class SearchBooks extends Component {
     });
   }
 
-  //
-
-  componentDidMount() {
-
-  }
+  
 
   render() {
     return (
@@ -85,7 +79,7 @@ class SearchBooks extends Component {
           <ol className="books-grid">
            
           </ol>
-          {this.state.error && <p>No Results...</p>}
+          {this.state.error && <p>No Results Found</p>}
         </div>
       </div>
     )

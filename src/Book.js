@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Link } from 'react-router-dom'
-import shelfs from './shelfs'
 import * as BooksAPI from './BooksAPI'
 
-const doc = document;
 
 class Book extends Component {
   constructor(props) {
